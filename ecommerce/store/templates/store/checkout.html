@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - E-commerce Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white p-4">
+        <h1 class="text-2xl">E-commerce Store</h1>
+        <nav>
+            <a href="{% url 'home' %}" class="mr-4">Home</a>
+            <a href="{% url 'cart' %}">Cart</a>
+        </nav>
+    </header>
+    <main class="container mx-auto mt-8">
+        <div class="bg-white p-8 shadow rounded">
+            <h2 class="text-3xl mb-4">{{ product.name }}</h2>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full max-w-md mb-4">
+            {% endif %}
+            <p class="text-2xl text-blue-600 mb-4">${{ product.price }}</p>
+            <p class="mb-4">{{ product.description }}</p>
+            <a href="{% url 'add_to_cart' product.id %}" class="bg-green-500 text-white px-4 py-2 rounded">Add to Cart</a>
+        </div>
+    </main>
+</body>
+</html>
